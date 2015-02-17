@@ -3,28 +3,21 @@ package com.example.user;
 import cn.bmob.im.bean.BmobChatUser;
 
 public class UserInfo extends BmobChatUser {
-	private String mPhoneNumber = null;
-	private String mPassWord = null;
+	private String mSex;
 	
-	public UserInfo(String phoneNumber, String passWord) {
-		this.mPhoneNumber = phoneNumber;
-		this.mPassWord = passWord;
+	/*
+	 * 默认为男性
+	 */
+	public UserInfo() {
+		mSex = "男";
 	}
 	
-	public String getPhoneNumber() {
-		return mPhoneNumber;
+	public void setSex(String sex) {
+		mSex = sex;
 	}
 	
-	public String getPassWord() {
-		return mPassWord;
-	}
-	
-	public void setPhoneNumber(String phoneNumber) {
-		this.mPhoneNumber = phoneNumber;
-	}
-	
-	public void setPassWord(String passWord) {
-		this.mPassWord = passWord;
+	public String getSex() {
+		return mSex;
 	}
 
 }

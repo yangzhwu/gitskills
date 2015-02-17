@@ -30,5 +30,7 @@
     <dimen name="size_28">28sp</dimen>
     <dimen name="size_29">29sp</dimen>
     <dimen name="size_30">30sp</dimen>
+    
+    <dimen name="text_size">@dimen/size_15</dimen>
 
 </resources>

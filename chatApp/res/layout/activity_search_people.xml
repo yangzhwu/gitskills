@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <EditText 
+        android:id="@+id/search_phone_number"
+        android:maxLines="1"
+        android:maxLength="11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/phoneNumber_hint"
+        android:textSize="@dimen/text_size"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"/>
+    
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="@string/find_text"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="@dimen/text_size"
+        android:background="@drawable/button_green_selector" />
+    
+    <com.example.view.XListView 
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/xlistview"
+        android:cacheColorHint="@android:color/transparent"
+        android:dividerHeight="1dp"
+        android:fadingEdgeLength="0dp"
+        android:fastScrollEnabled="true"
+        android:paddingBottom="10dp">        
+    </com.example.view.XListView>
+</LinearLayout>

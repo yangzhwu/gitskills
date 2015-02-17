@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main" >
+    
+    <RelativeLayout 
+        android:layout_marginTop="10dp"
+        android:background="@drawable/contact_item_bg_selector"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/search_nearby_people">
+        
+        <ImageView 
+            android:id="@+id/img_nearby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/find_nearby"/>
+        
+        <TextView 
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:textSize="@dimen/text_size"
+            android:text="@string/nearby_people"/>
+        
+        <ImageView 
+            android:layout_alignParentRight="true"
+            android:src="@drawable/img_arrows_1"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_below="@+id/search_nearby_people"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/contact_item_bg_selector"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/search_people">
+        
+        <ImageView 
+            android:id="@+id/img_find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/find_search"/>
+        
+        <TextView 
+            android:textSize="@dimen/text_size"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="@string/find_people"/>
+        
+        <ImageView 
+            android:layout_alignParentRight="true"
+            android:src="@drawable/img_arrows_1"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_below="@+id/search_people"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/contact_item_bg_selector"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/my_friends">
+        
+        <ImageView 
+            android:id="@+id/img_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/find_charm"/>
+        
+        <TextView 
+            android:textSize="@dimen/text_size"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="@string/good_friend"/>
+        
+        <ImageView 
+            android:layout_alignParentRight="true"
+            android:src="@drawable/img_arrows_1"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    
+
+</RelativeLayout>

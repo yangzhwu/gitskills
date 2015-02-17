@@ -14,19 +14,24 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
-        
-        <activity android:name="com.example.chatapp.SplashActivity">
-            <intent-filter >  
-                <action android:name="android.intent.action.MAIN" />  
-                <category android:name="android.intent.category.LAUNCHER" />  
+        <activity android:name="com.example.chatapp.SplashActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name="com.example.base.BaseActivity"></activity>
-        <activity
-            android:name="com.example.chatapp.LoginActivity">
+        <activity android:name="com.example.base.BaseActivity" >
         </activity>
-        
+        <activity android:name="com.example.chatapp.LoginActivity" >
+        </activity>
+        <activity android:name="com.example.chatapp.RegisterActivity" >
+        </activity>
+        <activity android:name="com.example.chatapp.MainActivity" >
+        </activity>
+        <activity android:name="com.example.chatapp.SearchPeopleActivity" >
+        </activity>
+
         <service
             android:name="cn.bmob.push.lib.service.PushService"
             android:exported="true"
@@ -37,15 +42,20 @@
                 <action android:name="cn.bmob.push.lib.service.PushService" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name="com.example.chatapp.PersonalInfoActivity" >
+        </activity>
     </application>
-    
+
     <!-- Push SDK权限 -->
     <permission
         android:name="cn.bmob.permission.push"
         android:protectionLevel="normal" >
     </permission>
-    <uses-permission android:name="cn.bmob.permission.push" /> <!-- 添加自定义的权限 -->
-    
+     <!-- 添加自定义的权限 -->
+    <uses-permission android:name="cn.bmob.permission.push" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

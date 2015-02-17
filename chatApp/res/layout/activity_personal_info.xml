@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    tools:context=".PersonalInfoActivity" >
+
+    <RelativeLayout 
+        android:background="@drawable/contact_item_bg_selector"
+        android:id="@+id/avater_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        
+        <TextView 
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/avater_text"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:layout_height="match_parent"/>
+        
+        <ImageView 
+            android:layout_marginRight="10dp"
+            android:src="@drawable/img_arrows_1"
+            android:id="@+id/img_arrows_avater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+        
+        <ImageView
+            android:id="@+id/img_avater"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="50dp"
+            style="@style/avatar_80" />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/nick_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/contact_item_bg_selector"
+        android:layout_below="@+id/avater_layout"
+        android:layout_marginTop="10dp">
+        
+        <TextView 
+            android:text="@string/nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
+        
+        <ImageView 
+            android:id="@+id/img_arrows_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/img_arrows_1"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nick_name"
+            android:text="长江七号"
+            android:textSize="@dimen/text_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/sex_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/contact_item_bg_selector"
+        android:layout_below="@+id/nick_layout"
+        android:layout_marginTop="10dp">
+        
+        <TextView 
+            android:text="@string/sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
+        
+        <ImageView 
+            android:id="@+id/img_arrows_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/img_arrows_1"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sex"
+            android:text="男"
+            android:textSize="@dimen/text_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"/>
+    </RelativeLayout>
+    
+    <Button 
+        android:layout_below="@+id/sex_layout"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_friend"
+        android:background="@drawable/button_green_selector"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/text_size"
+        android:text="@string/add_friend"/>
+    
+</RelativeLayout>

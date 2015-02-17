@@ -14,12 +14,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public abstract class BaseActivity extends FragmentActivity{
-	private RelativeLayout header = null;
-	private RelativeLayout back_btn = null;
-	private TextView title = null;
-	private BmobUserManager mUserManager = null;
+	protected RelativeLayout header = null;
+	protected RelativeLayout back_btn = null;
+	protected TextView title = null;
+	protected BmobUserManager mUserManager = null;
 	private FrameLayout container = null;
 	protected PDHelper mPDHelper = null;
+	
     @Override
     protected void onCreate(Bundle arg0) {
     	// TODO Auto-generated method stub
@@ -28,19 +29,24 @@ public abstract class BaseActivity extends FragmentActivity{
     	
     	mUserManager = BmobUserManager.getInstance(this);
     	header = (RelativeLayout) this.findViewById(R.id.head);
-    	setHeadVisible(header);
+    	setHeadVisible();
     	back_btn = (RelativeLayout) this.findViewById(R.id.back_btn);
+    	setBackBtnVisible();
+    	title = (TextView) this.findViewById(R.id.title);
     	if (header.getVisibility() == View.VISIBLE) {
-    		back_btn.setOnClickListener(new OnClickListener() {
+    		setTitle();
+    		if (back_btn.getVisibility() == View.VISIBLE) {
+    		    back_btn.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					finish();
-					overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
-				}
+				    @Override
+				    public void onClick(View v) {
+					    // TODO Auto-generated method stub
+					    finish();
+					    overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
+				    }
     			
-    		});
+    		    });
+    		}
     	}
     	container = (FrameLayout) this.findViewById(R.id.content);
     	View view = getContentView();
@@ -51,7 +57,26 @@ public abstract class BaseActivity extends FragmentActivity{
     /*
      * 抽象方法，设置头部布局是否可见
      */
-    public abstract void setHeadVisible(RelativeLayout header);
+    public abstract void setHeadVisible();
     
+    /*
+     * 设置显示的内容
+     */
     public abstract View getContentView();
+    
+    /*
+     * 设置头部的标题
+     */
+    public abstract void setTitle();
+    
+    /*
+     * 设置返回按钮是否可见
+     */
+    public abstract void setBackBtnVisible();
+    
+    @Override
+    public void onBackPressed() {
+    	finish();
+    	overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
+    }
 }

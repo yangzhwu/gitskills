@@ -21,15 +21,15 @@
     <style name="avatar_80" >
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">80dp</item>
-        <item name="android:src">@drawable/ic_launcher</item>
-        <item name="android:background">@drawable/round</item>
+        <item name="android:background">@null</item>
+        <item name="android:src">@drawable/default_avatar</item>
     </style>
     
     <!-- 灰色横线 -->
     <style name="horizon_line">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
-        <item name="android:src">@color/grey</item>
+        <item name="android:src">@color/divider_color</item>
     </style>
     
     <!-- 灰色竖线 -->
@@ -43,5 +43,14 @@
     <style name="round_green_button_style">
         <item name="android:background">@drawable/round_green_button</item>
     </style>
+    
+    <!-- 所有dialog样式 -->
+    <style name="my_dialog">  
+        <item name="android:windowFrame">@null</item>	<!-- 边框 -->  
+        <item name="android:windowIsFloating">true</item><!-- 是否浮现在activity之上 -->  
+        <item name="android:windowIsTranslucent">false</item><!-- 半透明 -->  
+        <item name="android:windowBackground">@color/dialog_bg</item><!-- 自己想要的背景 -->  
+        <item name="android:windowNoTitle">true</item>  <!-- 除去title -->  
+    </style> 
 
 </resources>

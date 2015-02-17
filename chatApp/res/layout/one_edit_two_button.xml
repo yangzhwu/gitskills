@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/title_color"
+        android:gravity="center"
+        android:text="@string/please_input_nick"/>
+    
+    <ImageView 
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        style="@style/horizon_line"/>
+    
+    <EditText 
+        android:id="@+id/nick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@null"
+        android:gravity="center"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/btn_cancel_color"
+        android:hint="@string/nick_name"/>
+    
+    <ImageView 
+        style="@style/horizon_line"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <TextView 
+            android:id="@+id/confirm"
+            android:background="@drawable/contact_item_bg_selector"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/btn_confirm_color"/>
+        
+        <ImageView 
+            style="@style/vertical_line"/>
+        
+        <TextView 
+            android:id="@+id/cancel"
+            android:background="@drawable/contact_item_bg_selector"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/cancel"
+            android:textColor="@color/btn_cancel_color"
+            android:gravity="center"/>
+    </LinearLayout>
+    
+
+</LinearLayout>

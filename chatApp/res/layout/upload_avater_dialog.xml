@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:background="@drawable/contact_item_bg_selector"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="@dimen/text_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_photo"
+        android:gravity="center"
+        android:textColor="@color/title_color"/>
+    
+    <ImageView 
+        style="@style/horizon_line"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    
+    <TextView 
+        android:background="@drawable/contact_item_bg_selector"
+        android:id="@+id/take_photo"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="@dimen/text_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_photo_by_take_photo"
+        android:gravity="center"
+        android:textColor="@color/btn_confirm_color"/>
+    
+    <ImageView 
+        style="@style/horizon_line"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    
+     <TextView 
+        android:background="@drawable/contact_item_bg_selector"
+        android:id="@+id/take_from_album"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="@dimen/text_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_photo_from_photo_album"
+        android:gravity="center"
+        android:textColor="@color/btn_confirm_color"/>
+     
+     <ImageView 
+        style="@style/horizon_line"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+     
+     <TextView 
+        android:background="@drawable/contact_item_bg_selector"
+        android:id="@+id/btn_cancel"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="@dimen/text_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:gravity="center"
+        android:textColor="@color/btn_cancel_color"/>
+
+</LinearLayout>

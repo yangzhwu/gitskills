@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main" >
+    
+    <RadioGroup 
+        android:id="@+id/Tab"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:paddingTop="3dp"
+            android:drawableTop="@drawable/index_tab_msg_selector"
+            android:background="@color/btn_common"
+            android:id="@+id/recent_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/recend_contact"
+            android:textColor="@color/black_to_red"
+            android:textSize="@dimen/text_size" />
+        
+        <ImageView 
+            style="@style/vertical_line"/>
+        
+        <RadioButton 
+            android:paddingTop="3dp"
+            android:id="@+id/contact_btn"
+            android:drawableTop="@drawable/index_tab_contacts_selector"
+            android:textSize="@dimen/text_size"
+            android:gravity="center"
+            android:button="@null"
+            android:text="@string/contacts"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_to_red"
+            android:background="@color/btn_common"/>
+        
+        <ImageView 
+            style="@style/vertical_line"/>
+        
+        
+        <RadioButton 
+            android:paddingTop="3dp"
+            android:id="@+id/setting_btn"
+            android:drawableTop="@drawable/index_tab_setting_selector"
+            android:textSize="@dimen/text_size"
+            android:gravity="center"
+            android:button="@null"
+            android:text="@string/setting"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_to_red"
+            android:background="@color/btn_common"/>
+    </RadioGroup>
+    
+    <ImageView 
+        android:id="@+id/divider_line"
+        android:layout_above="@+id/Tab"
+        style="@style/horizon_line" />
+    
+    <FrameLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container"
+        android:layout_above="@+id/divider_line">
+    </FrameLayout>
+    
+</RelativeLayout>

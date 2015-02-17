@@ -29,14 +29,13 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
     private TextView mLogin = null;
     private TextView mCan_not_login = null;
     private TextView mNewUser = null;
-    private BmobUserManager mUserManager = null;
     private RegisterSuccessReceiver mReceiver = null;
     
     /*
 	 * 设置头部不可见
 	 */
 	@Override
-	public void setHeadVisible(RelativeLayout header) {
+	public void setHeadVisible() {
 		// TODO Auto-generated method stub
 		header.setVisibility(View.GONE);
 	}
@@ -69,8 +68,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		case R.id.can_not_login:
 			break;
 		case R.id.new_user:
-//			Intent intent = new Intent(this, RegisterActivity.class);
-//			startActivity(intent);
+			Intent intent = new Intent(this, RegisterActivity.class);
+			startActivity(intent);
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			break;
 			default:
@@ -109,10 +108,21 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	public void login() {
 		String phone_number = mPhoneNumber.getText().toString();
 		String pass_word = mPassWord.getText().toString();
-		if (TextUtils.isEmpty(phone_number) || TextUtils.isEmpty(pass_word) || mUserManager == null) {
+		if (TextUtils.isEmpty(phone_number)) {
+			ToastHelper.show(R.string.empty_phone_number);
 			return;
 		}
-		UserInfo userInfo = new UserInfo(phone_number, pass_word);	
+		if (TextUtils.isEmpty(pass_word)) {
+			ToastHelper.show(R.string.empty_pass_word);
+			return;
+		}
+		if (mUserManager == null) {
+			ToastHelper.show(R.string.init_wrong);
+			return;
+		}
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUsername(phone_number);
+		userInfo.setPassword(pass_word);
 		mPDHelper.show(R.string.loging);
 		mUserManager.login(userInfo, new SaveListener() {
 
@@ -127,6 +137,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			public void onSuccess() {
 				// TODO Auto-generated method stub
 				mPDHelper.dissmiss();
+				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+				startActivity(intent);
+				finish();
 			}
 			
 		});
@@ -144,6 +157,17 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			mReceiver = null;
 		}
 		super.onDestroy();
+	}
+
+	@Override
+	public void setTitle() {
+		
+	}
+
+	@Override
+	public void setBackBtnVisible() {
+		// TODO Auto-generated method stub
+		back_btn.setVisibility(View.GONE);
 	}
     
     

@@ -294,5 +294,18 @@
     <!-- 黑色 -->
     <color name="bg_main">#EDECEC</color>
     <!-- 底层背景颜色 -->
-
+    <color name="btn_common">#F8F8F8</color>
+    <!-- 按钮背景色 -->
+    
+    <!-- dialog背景色 -->
+    <color name="dialog_bg">#f2f2f2</color>
+    <!-- dialog标题颜色 -->
+    <color name="title_color">#a09898</color>
+    <!-- 取消按钮颜色 -->
+    <color name="btn_cancel_color">#666666</color>
+    <!-- 确定按钮颜色 -->
+    <color name="btn_confirm_color">#f06faf</color>
+    
+    <!-- 分割线颜色 -->
+    <color name="divider_color">#ebe4e4</color>
 </resources>

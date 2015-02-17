@@ -1,7 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/bg_main" >
+    
+    <EditText 
+        android:maxLines="1"
+        android:maxLength="11"
+        android:phoneNumber="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/phone_number"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/text_size"
+        android:hint="@string/phoneNumber_hint"/>
+    
+    <EditText 
+        android:maxLines="1"
+        android:password="true"
+        android:layout_below="@+id/phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pass_word"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/text_size"
+        android:hint="@string/passWord_hint"/>
+    
+    <EditText 
+        android:maxLines="1"
+        android:password="true"
+        android:layout_below="@+id/pass_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirm_pass_word"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/text_size"
+        android:hint="@string/confirm_pass_word"/>
+    
+    <Button 
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_green_selector"
+        android:layout_below="@+id/confirm_pass_word"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="@dimen/text_size"
+        android:text="@string/register_text"/>
+    
     
 
 </RelativeLayout>
