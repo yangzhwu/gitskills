@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/contact_item_bg_selector"
+    android:layout_height="120dp" >
+    
+    <ImageView 
+        android:id="@+id/avater"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/default_avatar"
+        android:layout_centerVertical="true"/>
+    
+    
+</RelativeLayout>

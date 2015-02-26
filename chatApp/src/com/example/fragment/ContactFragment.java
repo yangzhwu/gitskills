@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.example.base.BaseFragment;
+import com.example.chatapp.NearbyPeopleActivity;
 import com.example.chatapp.R;
 import com.example.chatapp.SearchPeopleActivity;
 
@@ -39,14 +40,17 @@ public class ContactFragment extends BaseFragment implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
-		case R.id.search_nearby_people:
+		case R.id.search_nearby_people: //附近的人
+			Intent intent_nearby_people = new Intent(context, NearbyPeopleActivity.class);
+			startActivity(intent_nearby_people);
+			context.overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			break;
-		case R.id.search_people:
+		case R.id.search_people: //查找用户
 			Intent intent = new Intent(context, SearchPeopleActivity.class);
 			startActivity(intent);
 			context.overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			break;
-		case R.id.my_friends:
+		case R.id.my_friends: //我的好友
 			break;
 			default:
 				break;

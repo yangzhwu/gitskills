@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_main"
     android:orientation="vertical" >
     
     <EditText 
@@ -32,12 +33,11 @@
     <com.example.view.XListView 
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/xlistview"
-        android:cacheColorHint="@android:color/transparent"
         android:dividerHeight="1dp"
-        android:fadingEdgeLength="0dp"
-        android:fastScrollEnabled="true"
+        android:fastScrollEnabled="false"
+        android:cacheColorHint="@android:color/transparent"
         android:paddingBottom="10dp">        
     </com.example.view.XListView>
 </LinearLayout>

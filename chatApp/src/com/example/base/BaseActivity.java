@@ -2,6 +2,7 @@ package com.example.base;
 
 import cn.bmob.im.BmobUserManager;
 
+import com.example.chatapp.MyApplication;
 import com.example.chatapp.R;
 import com.example.helper.PDHelper;
 
@@ -27,7 +28,8 @@ public abstract class BaseActivity extends FragmentActivity{
     	super.onCreate(arg0);
     	setContentView(R.layout.activity_base);
     	
-    	mUserManager = BmobUserManager.getInstance(this);
+    	mUserManager = MyApplication.getUserManager();
+    	mPDHelper = new PDHelper(this);
     	header = (RelativeLayout) this.findViewById(R.id.head);
     	setHeadVisible();
     	back_btn = (RelativeLayout) this.findViewById(R.id.back_btn);
@@ -51,7 +53,6 @@ public abstract class BaseActivity extends FragmentActivity{
     	container = (FrameLayout) this.findViewById(R.id.content);
     	View view = getContentView();
     	container.addView(view);
-    	mPDHelper = new PDHelper(this);
     }
     
     /*

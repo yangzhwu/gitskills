@@ -44,7 +44,7 @@ public final class R {
         /**  海军色 
          */
         public static final int black=0x7f050091;
-        public static final int black_to_red=0x7f050099;
+        public static final int black_to_red=0x7f05009b;
         /**  番木色 
          */
         public static final int blanchedalmond=0x7f05000b;
@@ -168,7 +168,7 @@ public final class R {
         public static final int dimgrey=0x7f05006e;
         /**  分割线颜色 
          */
-        public static final int divider_color=0x7f050098;
+        public static final int divider_color=0x7f05009a;
         /**  亮海蓝色 
          */
         public static final int dodgerblue=0x7f050080;
@@ -343,6 +343,8 @@ public final class R {
         /**  暗蓝色 
          */
         public static final int navy=0x7f050090;
+        public static final int normal_black=0x7f050099;
+        public static final int normal_pink=0x7f050098;
         /**  红色 
          */
         public static final int oldlace=0x7f05001f;
@@ -524,104 +526,114 @@ public final class R {
         public static final int find_charm=0x7f020004;
         public static final int find_nearby=0x7f020005;
         public static final int find_search=0x7f020006;
-        public static final int header_back_btn_normal=0x7f020007;
-        public static final int header_back_btn_pressed=0x7f020008;
-        public static final int header_back_selector=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
-        public static final int img_arrows_1=0x7f02000b;
-        public static final int index_tab_contacts_normal=0x7f02000c;
-        public static final int index_tab_contacts_pressed=0x7f02000d;
-        public static final int index_tab_contacts_selector=0x7f02000e;
-        public static final int index_tab_msg_normal=0x7f02000f;
-        public static final int index_tab_msg_pressed=0x7f020010;
-        public static final int index_tab_msg_selector=0x7f020011;
-        public static final int index_tab_setting_normal=0x7f020012;
-        public static final int index_tab_setting_pressed=0x7f020013;
-        public static final int index_tab_setting_selector=0x7f020014;
-        public static final int load=0x7f020015;
-        public static final int rect_bound=0x7f020016;
-        public static final int round=0x7f020017;
-        public static final int round_green_button=0x7f020018;
-        public static final int round_green_button_pressed=0x7f020019;
+        public static final int gender_boy=0x7f020007;
+        public static final int gender_girl=0x7f020008;
+        public static final int header_back_btn_normal=0x7f020009;
+        public static final int header_back_btn_pressed=0x7f02000a;
+        public static final int header_back_selector=0x7f02000b;
+        public static final int ic_launcher=0x7f02000c;
+        public static final int img_arrows_1=0x7f02000d;
+        public static final int index_tab_contacts_normal=0x7f02000e;
+        public static final int index_tab_contacts_pressed=0x7f02000f;
+        public static final int index_tab_contacts_selector=0x7f020010;
+        public static final int index_tab_msg_normal=0x7f020011;
+        public static final int index_tab_msg_pressed=0x7f020012;
+        public static final int index_tab_msg_selector=0x7f020013;
+        public static final int index_tab_setting_normal=0x7f020014;
+        public static final int index_tab_setting_pressed=0x7f020015;
+        public static final int index_tab_setting_selector=0x7f020016;
+        public static final int load=0x7f020017;
+        public static final int rect_bound=0x7f020018;
+        public static final int round=0x7f020019;
+        public static final int round_green_button=0x7f02001a;
+        public static final int round_green_button_pressed=0x7f02001b;
     }
     public static final class id {
         public static final int Tab=0x7f0a000d;
-        public static final int action_settings=0x7f0a003b;
-        public static final int add_friend=0x7f0a001b;
-        public static final int avater_layout=0x7f0a0012;
+        public static final int account_number=0x7f0a0030;
+        public static final int action_settings=0x7f0a0040;
+        public static final int add_friend=0x7f0a001c;
+        public static final int avater=0x7f0a002e;
+        public static final int avater_layout=0x7f0a0013;
         public static final int back_btn=0x7f0a0001;
-        public static final int btn_cancel=0x7f0a0030;
-        public static final int btn_search=0x7f0a001f;
+        public static final int btn_cancel=0x7f0a0035;
+        public static final int btn_search=0x7f0a0020;
         public static final int can_not_login=0x7f0a000b;
-        public static final int cancel=0x7f0a002d;
-        public static final int confirm=0x7f0a002c;
-        public static final int confirm_pass_word=0x7f0a001c;
+        public static final int cancel=0x7f0a0024;
+        public static final int confirm=0x7f0a0032;
+        public static final int confirm_pass_word=0x7f0a001d;
         public static final int contact_btn=0x7f0a000f;
         public static final int container=0x7f0a0011;
         public static final int content=0x7f0a0003;
         public static final int divider_line=0x7f0a0008;
+        public static final int female=0x7f0a0023;
         public static final int head=0x7f0a0000;
-        public static final int img_arrows_avater=0x7f0a0013;
-        public static final int img_arrows_nick=0x7f0a0016;
-        public static final int img_arrows_sex=0x7f0a0019;
-        public static final int img_avater=0x7f0a0014;
-        public static final int img_find=0x7f0a0024;
-        public static final int img_friend=0x7f0a0026;
-        public static final int img_nearby=0x7f0a0022;
+        public static final int img_arrows_avater=0x7f0a0014;
+        public static final int img_arrows_nick=0x7f0a0017;
+        public static final int img_arrows_sex=0x7f0a001a;
+        public static final int img_avater=0x7f0a0015;
+        public static final int img_find=0x7f0a0028;
+        public static final int img_friend=0x7f0a002a;
+        public static final int img_nearby=0x7f0a0026;
         public static final int login=0x7f0a000a;
         public static final int login_avatar=0x7f0a0005;
-        public static final int logout=0x7f0a0029;
-        public static final int my_friends=0x7f0a0025;
+        public static final int logout=0x7f0a002d;
+        public static final int male=0x7f0a0022;
+        public static final int my_friends=0x7f0a0029;
+        public static final int near_people_list=0x7f0a0012;
         public static final int new_user=0x7f0a000c;
-        public static final int nick=0x7f0a002b;
-        public static final int nick_layout=0x7f0a0015;
-        public static final int nick_name=0x7f0a0017;
+        public static final int nick=0x7f0a0031;
+        public static final int nick_layout=0x7f0a0016;
+        public static final int nick_name=0x7f0a0018;
         public static final int pass_word=0x7f0a0009;
-        public static final int personal_info_layout=0x7f0a0028;
+        public static final int personal_info_layout=0x7f0a002c;
         public static final int phoneNumber_passWord=0x7f0a0006;
         public static final int phone_number=0x7f0a0007;
         public static final int recent_btn=0x7f0a000e;
-        public static final int recent_list=0x7f0a0027;
-        public static final int register=0x7f0a001d;
-        public static final int search_nearby_people=0x7f0a0021;
-        public static final int search_people=0x7f0a0023;
-        public static final int search_phone_number=0x7f0a001e;
+        public static final int recent_list=0x7f0a002b;
+        public static final int register=0x7f0a001e;
+        public static final int search_avater=0x7f0a002f;
+        public static final int search_nearby_people=0x7f0a0025;
+        public static final int search_people=0x7f0a0027;
+        public static final int search_phone_number=0x7f0a001f;
         public static final int setting_btn=0x7f0a0010;
-        public static final int sex=0x7f0a001a;
-        public static final int sex_layout=0x7f0a0018;
-        public static final int take_from_album=0x7f0a002f;
-        public static final int take_photo=0x7f0a002e;
+        public static final int sex=0x7f0a001b;
+        public static final int sex_layout=0x7f0a0019;
+        public static final int take_from_album=0x7f0a0034;
+        public static final int take_photo=0x7f0a0033;
         public static final int title=0x7f0a0002;
-        public static final int user_name=0x7f0a002a;
         public static final int wrap_avatar=0x7f0a0004;
-        public static final int xlistview=0x7f0a0020;
-        public static final int xlistview_footer_content=0x7f0a0031;
-        public static final int xlistview_footer_hint_textview=0x7f0a0033;
-        public static final int xlistview_footer_progressbar=0x7f0a0032;
-        public static final int xlistview_header_arrow=0x7f0a0039;
-        public static final int xlistview_header_content=0x7f0a0034;
-        public static final int xlistview_header_hint_textview=0x7f0a0036;
-        public static final int xlistview_header_progressbar=0x7f0a003a;
-        public static final int xlistview_header_text=0x7f0a0035;
-        public static final int xlistview_header_time=0x7f0a0038;
-        public static final int xlistview_header_time_label=0x7f0a0037;
+        public static final int xlistview=0x7f0a0021;
+        public static final int xlistview_footer_content=0x7f0a0036;
+        public static final int xlistview_footer_hint_textview=0x7f0a0038;
+        public static final int xlistview_footer_progressbar=0x7f0a0037;
+        public static final int xlistview_header_arrow=0x7f0a003e;
+        public static final int xlistview_header_content=0x7f0a0039;
+        public static final int xlistview_header_hint_textview=0x7f0a003b;
+        public static final int xlistview_header_progressbar=0x7f0a003f;
+        public static final int xlistview_header_text=0x7f0a003a;
+        public static final int xlistview_header_time=0x7f0a003d;
+        public static final int xlistview_header_time_label=0x7f0a003c;
     }
     public static final class layout {
         public static final int activity_base=0x7f030000;
         public static final int activity_login=0x7f030001;
         public static final int activity_main=0x7f030002;
-        public static final int activity_personal_info=0x7f030003;
-        public static final int activity_register=0x7f030004;
-        public static final int activity_search_people=0x7f030005;
-        public static final int activity_splash=0x7f030006;
-        public static final int fragment_contact=0x7f030007;
-        public static final int fragment_recent=0x7f030008;
-        public static final int fragment_setting=0x7f030009;
-        public static final int item_search_people=0x7f03000a;
-        public static final int one_edit_two_button=0x7f03000b;
-        public static final int upload_avater_dialog=0x7f03000c;
-        public static final int xlistview_footer=0x7f03000d;
-        public static final int xlistview_header=0x7f03000e;
+        public static final int activity_nearby_people=0x7f030003;
+        public static final int activity_personal_info=0x7f030004;
+        public static final int activity_register=0x7f030005;
+        public static final int activity_search_people=0x7f030006;
+        public static final int activity_splash=0x7f030007;
+        public static final int choose_sex_dialog=0x7f030008;
+        public static final int fragment_contact=0x7f030009;
+        public static final int fragment_recent=0x7f03000a;
+        public static final int fragment_setting=0x7f03000b;
+        public static final int item_nearby_people=0x7f03000c;
+        public static final int item_search_people=0x7f03000d;
+        public static final int one_edit_two_button=0x7f03000e;
+        public static final int upload_avater_dialog=0x7f03000f;
+        public static final int xlistview_footer=0x7f030010;
+        public static final int xlistview_header=0x7f030011;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -634,19 +646,23 @@ public final class R {
         public static final int app_name=0x7f070000;
         public static final int avater_text=0x7f070026;
         public static final int can_not_login=0x7f070007;
-        public static final int cancel=0x7f07002e;
+        public static final int cancel=0x7f07002f;
         /**  上传头像dialog 
          */
-        public static final int choose_photo=0x7f07002b;
-        public static final int choose_photo_by_take_photo=0x7f07002c;
-        public static final int choose_photo_from_photo_album=0x7f07002d;
+        public static final int choose_photo=0x7f07002c;
+        public static final int choose_photo_by_take_photo=0x7f07002d;
+        public static final int choose_photo_from_photo_album=0x7f07002e;
+        /**  选择性别dialog 
+         */
+        public static final int choose_sex=0x7f070031;
         public static final int complete_load_data=0x7f070023;
-        public static final int confirm=0x7f07002f;
+        public static final int confirm=0x7f070030;
         public static final int confirm_pass_word=0x7f070012;
         public static final int contacts=0x7f070014;
         public static final int data_wrong=0x7f070022;
         public static final int empty_pass_word=0x7f07000f;
         public static final int empty_phone_number=0x7f07000e;
+        public static final int female=0x7f070033;
         public static final int find_people=0x7f070018;
         public static final int find_text=0x7f07001a;
         public static final int good_friend=0x7f070019;
@@ -655,7 +671,8 @@ public final class R {
         public static final int login_failed=0x7f07000c;
         public static final int login_text=0x7f070005;
         public static final int loging=0x7f070009;
-        public static final int logout=0x7f07002a;
+        public static final int logout=0x7f07002b;
+        public static final int male=0x7f070032;
         public static final int nearby_people=0x7f070017;
         public static final int new_user=0x7f070008;
         public static final int nick_name=0x7f070027;
@@ -664,13 +681,14 @@ public final class R {
         public static final int passWord_hint=0x7f070004;
         public static final int personal_infomation=0x7f070021;
         public static final int phoneNumber_hint=0x7f070003;
-        public static final int please_input_nick=0x7f070030;
-        public static final int please_input_signature=0x7f070031;
+        public static final int please_input_nick=0x7f070034;
+        public static final int please_input_signature=0x7f070035;
         public static final int please_wait=0x7f07000b;
         public static final int recend_contact=0x7f070013;
         public static final int register_failed=0x7f07000d;
         public static final int register_text=0x7f070006;
         public static final int registing=0x7f07000a;
+        public static final int save_info=0x7f07002a;
         public static final int searching_friends=0x7f070024;
         public static final int setting=0x7f070016;
         public static final int sex=0x7f070028;
@@ -713,6 +731,9 @@ public final class R {
         /**  头像80 
          */
         public static final int avatar_80=0x7f080002;
+        /**  dialog中item的样式 
+         */
+        public static final int dialog_item=0x7f080007;
         /**  灰色横线 
          */
         public static final int horizon_line=0x7f080003;

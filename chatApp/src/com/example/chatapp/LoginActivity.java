@@ -137,6 +137,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			public void onSuccess() {
 				// TODO Auto-generated method stub
 				mPDHelper.dissmiss();
+				UserInfo userInfo = mUserManager.getCurrentUser(UserInfo.class);
 				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
 				finish();

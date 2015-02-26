@@ -46,6 +46,7 @@
     <string name="nick_name">昵称</string>
     <string name="sex">性别</string>
     <string name="add_friend">加为好友</string>
+    <string name="save_info">保存</string>
     <string name="logout">退出登录</string>
     
     <!-- 上传头像dialog -->
@@ -54,6 +55,11 @@
     <string name="choose_photo_from_photo_album">从相册选取</string>
     <string name="cancel">取消</string>
     <string name="confirm">确定</string>
+    
+    <!-- 选择性别dialog -->
+    <string name="choose_sex">选择性别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
     
     <string name="please_input_nick">请输入昵称</string>
     <string name="please_input_signature">请输入签名</string>

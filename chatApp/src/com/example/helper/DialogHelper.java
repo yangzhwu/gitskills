@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -72,10 +73,12 @@ public class DialogHelper {
 	/*
 	 * 有一个输入框和两个按钮的dialog，如输入昵称的dialog
 	 */
-	public static Dialog createOneEditTextAndTwoButton(Context context, final TextView textView) {
+	public static Dialog createOneEditTextAndTwoButton(Context context, final TextView textView, final DialogInterface.OnClickListener dialogListener, final StringBuilder sb) {
 		final Dialog dialog = new Dialog(context, R.style.my_dialog);
 		View view = LayoutInflater.from(context).inflate(R.layout.one_edit_two_button, null);
 		final EditText nick = (EditText) view.findViewById(R.id.nick);
+		nick.setText(textView.getText().toString());
+		nick.setSelection(nick.getText().toString().length());
 		TextView confirm = (TextView) view.findViewById(R.id.confirm);
 		TextView cancel = (TextView) view.findViewById(R.id.cancel);
 		
@@ -90,7 +93,10 @@ public class DialogHelper {
 						ToastHelper.show("昵称不能为空");
 					}
 					else {
-						textView.setText(nickString);
+						if (!nick.getText().toString().equals(textView.getText().toString())) {
+							sb.append(nick.getText().toString());
+							dialogListener.onClick(dialog, 0);
+						}
 						dialog.dismiss();
 					}
 					break;
@@ -109,6 +115,47 @@ public class DialogHelper {
 		dialog.setContentView(view);
 		setDialogWidth(dialog);
 		return dialog;
+	}
+	
+	/*
+	 * 选择性别的dialog
+	 */
+	public static Dialog createChooseSexDialog(Context context, final DialogInterface.OnClickListener dialogListener) {
+		final Dialog dialog = new Dialog(context, R.style.my_dialog);
+		View view = LayoutInflater.from(context).inflate(R.layout.choose_sex_dialog, null);
+		dialog.setContentView(view);
+		TextView male = (TextView) view.findViewById(R.id.male);
+		TextView female = (TextView) view.findViewById(R.id.female);
+		TextView cancel = (TextView) view.findViewById(R.id.cancel);
+		
+		OnClickListener listener = new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				switch (v.getId()) {
+				case R.id.male:
+	                dialog.dismiss();				
+	                dialogListener.onClick(dialog, 0);
+					break;
+				case R.id.female:
+					dialog.dismiss();
+					dialogListener.onClick(dialog, 1);
+					break;
+				case R.id.cancel:
+					dialog.dismiss();
+					break;
+				default:
+					break;
+				}
+				
+			}
+		};
+		male.setOnClickListener(listener);
+		female.setOnClickListener(listener);
+		cancel.setOnClickListener(listener);
+		setDialogWidth(dialog);
+		return dialog;
+		
 	}
 	
 	/*

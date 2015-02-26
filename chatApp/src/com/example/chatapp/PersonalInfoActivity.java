@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import cn.bmob.im.bean.BmobChatUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
@@ -12,6 +13,7 @@ import cn.bmob.v3.listener.UploadFileListener;
 
 import com.example.base.BaseActivity;
 import com.example.helper.DialogHelper;
+import com.example.helper.PDHelper;
 import com.example.helper.ToastHelper;
 import com.example.image.ImageLoadOptions;
 import com.example.user.UserInfo;
@@ -23,6 +25,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.UserManager;
+import android.provider.ContactsContract.CommonDataKinds.Nickname;
 import android.provider.MediaStore;
 import android.R.integer;
 import android.app.Activity;
@@ -31,6 +34,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+import android.transition.ChangeBounds;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -39,6 +43,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PersonalInfoActivity extends BaseActivity implements OnClickListener {
 	private RelativeLayout mAvater_layout = null;
@@ -46,6 +51,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	private RelativeLayout mSex_layout = null;
 	private ImageView mImgAvater = null;
 	private TextView mNickname = null;
+	private TextView mSex = null;
 	// 拍照
 	private static final int CHOOSE_BY_TAKE_PHOTO = 0;
 	// 从相册选取
@@ -54,6 +60,9 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	private static final int CROP_CHOOSE_BY_TAKE_PHOTO = 2;
 	//头像存储路径
     private File path = null;
+    private static final int MALE = 0;
+    private static final int FEMALE = 1;
+
 	@Override
 	public void setHeadVisible() {
 		header.setVisibility(View.VISIBLE);
@@ -68,11 +77,12 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 		mSex_layout = (RelativeLayout) view.findViewById(R.id.sex_layout);
 		mImgAvater = (ImageView) view.findViewById(R.id.img_avater);
 		mNickname = (TextView) view.findViewById(R.id.nick_name);
+		mSex = (TextView) view.findViewById(R.id.sex);
 
 		mAvater_layout.setOnClickListener(this);
 		mNick_layout.setOnClickListener(this);
 		mSex_layout.setOnClickListener(this);
-		initAvater();
+		initUserInfo();
 		return view;
 	}
 
@@ -87,28 +97,13 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	}
 	
 	/*
-	 * 根据用户名加载用户消息，包括头像，昵称，性别等
+	 * 根据用户名加载用户信息，包括头像，昵称，性别等
 	 */
-	public void initAvater() {
-		String userName = MyApplication.getUserManager().getCurrentUserName();
-		MyApplication.getUserManager().queryUser(userName, new FindListener<UserInfo>() {
-
-			@Override
-			public void onError(int arg0, String arg1) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onSuccess(List<UserInfo> arg0) {
-				// TODO Auto-generated method stub
-				if (arg0.size() == 0) {
-					return;
-				}
-				UserInfo userInfo = arg0.get(0);
-				refreshAvater(userInfo.getAvatar());
-			}
-		});
+	public void initUserInfo() {
+		UserInfo userInfo = mUserManager.getCurrentUser(UserInfo.class);
+		refreshAvater(userInfo.getAvatar());
+		mNickname.setText(userInfo.getNick());
+		mSex.setText(userInfo.getSex());
 	}
 
 	@Override
@@ -129,17 +124,46 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 					default:
 						break;
 					}
-
 				}
 			};
 			Dialog avater_dialog = DialogHelper.creatUpLoadAvaterDialog(this, avater_listener);
 			avater_dialog.show();
 			break;
 		case R.id.nick_layout: //昵称
-			Dialog nick_Dialog = DialogHelper.createOneEditTextAndTwoButton(this, mNickname);
-			nick_Dialog.show();
+			final StringBuilder sb = new StringBuilder();
+			DialogInterface.OnClickListener nick_listener = new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					updataNick(sb);					
+				}
+			};
+			Dialog nick_dialog = DialogHelper.createOneEditTextAndTwoButton(this, mNickname, nick_listener, sb);
+			nick_dialog.show();
 			break;
-		case R.id.sex_layout:
+		case R.id.sex_layout: //性别
+            DialogInterface.OnClickListener sex_listener = new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					switch (which) {
+					case MALE:
+						if (!mSex.getText().toString().equals("男")) {
+							updataSex("男");
+						}
+						break;
+					case FEMALE:
+						if (!mSex.getText().toString().equals("女")) {
+							updataSex("女");
+						}
+						break;
+					default:
+						break;
+					}					
+				}
+			};
+			Dialog sex_dialog = DialogHelper.createChooseSexDialog(this, sex_listener);
+			sex_dialog.show();
 			break;
 		default:
 			break;
@@ -154,7 +178,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 		 * 打开相机，拍摄照片 剪切照片 将剪切好的照片放入sdCard中 将照片上传到服务器 将照片保存在ImageView中
 		 */
 		if (path == null) {
-		    String dir = MyApplication.getInstance().getAvaterDir(MyApplication.getInstance().getUserManager().getCurrentUserName());
+		    String dir = MyApplication.getInstance().getUserDir(MyApplication.getInstance().getUserManager().getCurrentUserName());
             path = new File(dir, "avater.png");
 		}
         if (path.exists()) {
@@ -230,7 +254,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	 * 将头像保存在本地
 	 */
 	private void saveAvaterToLocal(Bitmap photo) {
-        String dir = MyApplication.getInstance().getAvaterDir(MyApplication.getInstance().getUserManager().getCurrentUserName());
+        String dir = MyApplication.getInstance().getUserDir(MyApplication.getInstance().getUserManager().getCurrentUserName());
         path = new File(dir, "avater.png");
         if (path.exists()) {
         	path.delete();
@@ -261,6 +285,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	 * 上传头像到服务器
 	 */
 	private void upLoadAvater() {
+		mPDHelper.show("正在处理");
 		if (path == null) return;
 		final BmobFile bmobFile = new BmobFile(path);
 		bmobFile.upload(this, new UploadFileListener() {
@@ -274,6 +299,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 			@Override
 			public void onFailure(int arg0, String arg1) {
 				// TODO Auto-generated method stub
+				mPDHelper.dissmiss();
 				ToastHelper.show("上传头像失败 " + arg1);
 			}
 		});
@@ -283,7 +309,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	 * 更新数据表中头像的URL
 	 */
 	private void updataUser(final String url) {
-		UserInfo userInfo = (UserInfo) MyApplication.getUserManager().getCurrentUser(UserInfo.class);
+		UserInfo userInfo = mUserManager.getCurrentUser(UserInfo.class);
 		userInfo.setAvatar(url);
 		userInfo.update(this, new UpdateListener() {
 			
@@ -297,6 +323,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 			@Override
 			public void onFailure(int arg0, String arg1) {
 				// TODO Auto-generated method stub
+				mPDHelper.dissmiss();
 				ToastHelper.show("头像更新失败");
 			}
 		});
@@ -308,6 +335,62 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	private void refreshAvater(final String url) {
 		if (url != null && !TextUtils.isEmpty(url)) {
 		    ImageLoader.getInstance().displayImage(url, mImgAvater, ImageLoadOptions.getOptions());
+		    mPDHelper.dissmiss();
 		}
 	}
+	
+	/*
+	 * 性别修改上传到服务器
+	 */
+	private void updataSex(final String sex) {
+		mPDHelper.show("正在处理");
+		UserInfo userInfo = mUserManager.getCurrentUser(UserInfo.class);
+		userInfo.setSex(sex);
+		userInfo.update(this, new UpdateListener() {
+			
+			@Override
+			public void onSuccess() {
+				// TODO Auto-generated method stub
+				mPDHelper.dissmiss();
+				ToastHelper.show("性别修改成功");
+				mSex.setText(sex);
+			}
+			
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				// TODO Auto-generated method stub
+				mPDHelper.dissmiss();
+				ToastHelper.show("性别修改失败");
+			}
+		});
+	}
+	
+	/*
+	 * 昵称修改上传到服务器
+	 */
+	private void updataNick(final StringBuilder sb) {
+		mPDHelper.show("正在处理");
+		UserInfo userInfo = mUserManager.getCurrentUser(UserInfo.class);
+		String s = sb.toString();
+		userInfo.setNick(sb.toString());
+		userInfo.update(this, new UpdateListener() {
+			
+			@Override
+			public void onSuccess() {
+				// TODO Auto-generated method stub
+				mPDHelper.dissmiss();
+				ToastHelper.show("昵称修改成功");
+				mNickname.setText(sb.toString());
+			}
+			
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				// TODO Auto-generated method stub
+				mPDHelper.dissmiss();  
+				ToastHelper.show("昵称修改失败");
+			}
+		});
+	}
+	
+	
 }

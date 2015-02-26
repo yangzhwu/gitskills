@@ -91,6 +91,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			public void onSuccess() {
 				//注册成功后发送注册成功广播，关闭登陆界面
 				//关闭注册界面
+				//上传位置信息
 				//跳转到主界面
 				Intent register_success = new Intent(BroadcastConstant.REGISTER_SUCCESS);
 				sendBroadcast(register_success);
@@ -125,6 +126,5 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 		finish();
 		overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
 	}
-
 
 }

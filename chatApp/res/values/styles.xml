@@ -36,7 +36,7 @@
     <style name="vertical_line">
         <item name="android:layout_width">1px</item>
         <item name="android:layout_height">match_parent</item>    
-        <item name="android:src">@color/grey</item>
+        <item name="android:src">@color/divider_color</item>
     </style>
     
     <!-- 绿色圆角按钮 -->
@@ -52,5 +52,16 @@
         <item name="android:windowBackground">@color/dialog_bg</item><!-- 自己想要的背景 -->  
         <item name="android:windowNoTitle">true</item>  <!-- 除去title -->  
     </style> 
+    
+    <!-- dialog中item的样式 -->
+    <style name="dialog_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:background">@drawable/contact_item_bg_selector</item>
+    </style>
 
 </resources>

@@ -16,8 +16,9 @@ public class SplashActivity extends FragmentActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_splash);
-//		
+		
 		BmobChat.getInstance(this).init(MyApplication.getInstance().APP_KEY);
+		MyApplication.getInstance().startLocation();
 		myHandler.sendEmptyMessageDelayed(GO_LOGIN, 2000);
 	}
 	

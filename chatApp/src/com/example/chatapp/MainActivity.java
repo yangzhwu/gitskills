@@ -61,6 +61,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		contact_btn.setOnClickListener(this);
 		setting_btn.setOnClickListener(this);
 		changeContent();
+		MyApplication.getInstance().updataLocation();
 		return view;
 	}
     
@@ -146,6 +147,11 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 				break;
 		}
 		fragmentTrasaction.commit();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 	}
 
 }

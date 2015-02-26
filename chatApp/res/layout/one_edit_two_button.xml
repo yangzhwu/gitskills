@@ -29,8 +29,7 @@
         android:background="@null"
         android:gravity="center"
         android:textSize="@dimen/text_size"
-        android:textColor="@color/btn_cancel_color"
-        android:hint="@string/nick_name"/>
+        android:textColor="@color/btn_cancel_color"/>
     
     <ImageView 
         style="@style/horizon_line"/>
