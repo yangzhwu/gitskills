@@ -5,9 +5,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import cn.bmob.im.BmobChatManager;
 import cn.bmob.im.bean.BmobChatUser;
+import cn.bmob.im.config.BmobConfig;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.PushListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
@@ -40,6 +43,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -52,6 +56,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	private ImageView mImgAvater = null;
 	private TextView mNickname = null;
 	private TextView mSex = null;
+	private Button mAddFriend = null;
 	// 拍照
 	private static final int CHOOSE_BY_TAKE_PHOTO = 0;
 	// 从相册选取
@@ -62,6 +67,8 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
     private File path = null;
     private static final int MALE = 0;
     private static final int FEMALE = 1;
+    //是否查看的自己的信息，自己的为false，其他的为true
+    private boolean isOtherUser = false;
 
 	@Override
 	public void setHeadVisible() {
@@ -78,17 +85,33 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 		mImgAvater = (ImageView) view.findViewById(R.id.img_avater);
 		mNickname = (TextView) view.findViewById(R.id.nick_name);
 		mSex = (TextView) view.findViewById(R.id.sex);
-
-		mAvater_layout.setOnClickListener(this);
-		mNick_layout.setOnClickListener(this);
-		mSex_layout.setOnClickListener(this);
+		mAddFriend = (Button) view.findViewById(R.id.add_friend);
+        if (!isOtherUser) {
+		    mAvater_layout.setOnClickListener(this);
+		    mNick_layout.setOnClickListener(this);
+		    mSex_layout.setOnClickListener(this);
+        }
+        else {
+        	view.findViewById(R.id.img_arrows_avater).setVisibility(View.INVISIBLE);
+        	view.findViewById(R.id.img_arrows_nick).setVisibility(View.INVISIBLE);
+        	view.findViewById(R.id.img_arrows_sex).setVisibility(View.INVISIBLE);
+        	mAddFriend.setVisibility(View.VISIBLE);
+        	mAddFriend.setOnClickListener(this);
+        }
 		initUserInfo();
 		return view;
 	}
 
 	@Override
 	public void setTitle() {
-		title.setText(R.string.personal_infomation);
+		if (this.getIntent().getExtras() == null) {
+		    title.setText(R.string.personal_infomation);
+		    isOtherUser = false;
+		}
+		else {
+			isOtherUser = true;
+			title.setText(R.string.other_user_information);
+		}
 	}
 
 	@Override
@@ -100,10 +123,34 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	 * 根据用户名加载用户信息，包括头像，昵称，性别等
 	 */
 	public void initUserInfo() {
-		UserInfo userInfo = mUserManager.getCurrentUser(UserInfo.class);
-		refreshAvater(userInfo.getAvatar());
-		mNickname.setText(userInfo.getNick());
-		mSex.setText(userInfo.getSex());
+		if (!isOtherUser) {
+		    UserInfo userInfo = mUserManager.getCurrentUser(UserInfo.class);
+		    refreshAvater(userInfo.getAvatar());
+		    mNickname.setText(userInfo.getNick());
+		    mSex.setText(userInfo.getSex());
+		}
+		else {
+			String userName = this.getIntent().getExtras().getString("userName");
+			mUserManager.queryUser(userName, new FindListener<UserInfo>() {
+
+				@Override
+				public void onError(int arg0, String arg1) {
+					// TODO Auto-generated method stub
+					ToastHelper.show("数据出错");
+				}
+
+				@Override
+				public void onSuccess(List<UserInfo> arg0) {
+					// TODO Auto-generated method stub
+					ToastHelper.show(arg0.size() + " ");
+					UserInfo userInfo = arg0.get(0);
+					refreshAvater(userInfo.getAvatar());
+					mNickname.setText(userInfo.getNick());
+					mSex.setText(userInfo.getSex());
+				}
+				
+			});
+		}
 	}
 
 	@Override
@@ -165,9 +212,35 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 			Dialog sex_dialog = DialogHelper.createChooseSexDialog(this, sex_listener);
 			sex_dialog.show();
 			break;
+		case R.id.add_friend:
+			//添加对方为好友
+			addFriend();
+			break;
 		default:
 			break;
 		}
+	}
+	
+	public void addFriend() {
+		mPDHelper.show("正在发送请求");
+		String objectId = this.getIntent().getExtras().getString("objectId");
+		BmobChatManager.getInstance(this).sendTagMessage(BmobConfig.TAG_ADD_CONTACT,
+				objectId, new PushListener() {
+
+					@Override
+					public void onSuccess() {
+						// TODO Auto-generated method stub
+						mPDHelper.dissmiss();
+						ToastHelper.show("发送请求成功，等待对方验证！");
+					}
+
+					@Override
+					public void onFailure(int arg0, final String arg1) {
+						// TODO Auto-generated method stub
+						mPDHelper.dissmiss();
+						ToastHelper.show("发送请求失败");
+					}
+				});
 	}
 
 	/*

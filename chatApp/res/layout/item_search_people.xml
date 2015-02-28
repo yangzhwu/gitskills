@@ -8,6 +8,7 @@
         android:id="@+id/search_avater"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:scaleType="fitXY"
         android:src="@drawable/default_avatar"
         android:layout_marginLeft="10dp"
         android:layout_centerVertical="true"/>
@@ -19,7 +20,7 @@
         android:id="@+id/account_number"
         android:text="账号"
         android:textSize="@dimen/size_18"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:textColor="@color/normal_black"/>
     
@@ -42,7 +43,7 @@
         android:text="性别"
         android:textSize="@dimen/size_18"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="30dp"
         android:textColor="@color/normal_black"/>
 

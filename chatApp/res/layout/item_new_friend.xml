@@ -4,9 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <com.example.view.XListView 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="@android:color/transparent"
-        android:id="@+id/near_people_list" />
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hello，every one"/>
 </LinearLayout>

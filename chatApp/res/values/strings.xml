@@ -28,6 +28,7 @@
     <string name="find_people">查找用户</string>
     <string name="good_friend">我的好友</string>
     <string name="find_text">查找</string>
+    <string name="new_friend">新朋友</string>
     
     <!-- XListView所需要的string -->
     <string name="xlistview_header_hint_normal">下拉刷新</string>
@@ -38,6 +39,7 @@
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
     
     <string name="personal_infomation">个人资料</string>
+    <string name="other_user_information">他人资料</string>
     <string name="data_wrong">数据错误</string>
     <string name="complete_load_data">数据加载完毕</string>
     <string name="searching_friends">正在查找好友</string>

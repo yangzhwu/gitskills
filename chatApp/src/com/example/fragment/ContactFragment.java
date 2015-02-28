@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.example.base.BaseFragment;
 import com.example.chatapp.NearbyPeopleActivity;
+import com.example.chatapp.NewFriend;
 import com.example.chatapp.R;
 import com.example.chatapp.SearchPeopleActivity;
 
@@ -51,6 +52,9 @@ public class ContactFragment extends BaseFragment implements OnClickListener{
 			context.overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			break;
 		case R.id.my_friends: //我的好友
+			Intent intent_friend = new Intent(context, NewFriend.class);
+			startActivity(intent_friend);
+			context.overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			break;
 			default:
 				break;

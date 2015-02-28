@@ -3,6 +3,8 @@ package com.example.chatapp;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,6 +72,7 @@ public class SearchPeopleActivity extends BaseActivity implements OnClickListene
 	    mAdapter = new SearchPeopleAdapter(this, mData);
 	    mXListView.setAdapter(mAdapter);
 	    mXListView.setXListViewListener(this);
+	    mXListView.setOnItemClickListener(this);
 	}
     
 	/*
@@ -188,7 +191,14 @@ public class SearchPeopleActivity extends BaseActivity implements OnClickListene
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-		
+		Intent intent = new Intent(this, PersonalInfoActivity.class);
+		Bundle bundle = new Bundle();
+		//因为listView多加了头布局，所以减1
+		bundle.putString("objectId", mData.get(arg2 - 1).getObjectId());
+		bundle.putString("userName", mData.get(arg2 - 1).getUsername());
+		intent.putExtras(bundle);
+		startActivity(intent);
+		overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 	}
 
 }

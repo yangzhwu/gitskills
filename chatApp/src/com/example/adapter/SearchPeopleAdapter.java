@@ -48,7 +48,7 @@ public class SearchPeopleAdapter extends BaseAdapter{
 		UserInfo userInfo = mData.get(position);
 		if (convertView == null) {
 		    convertView = LayoutInflater.from(mContext).inflate(R.layout.item_search_people, null);
-		    AbsListView.LayoutParams lParams = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 240);
+		    AbsListView.LayoutParams lParams = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 200);
 		    convertView.setLayoutParams(lParams);
 		    holder = new Holder();
 		    holder.accountNumber = (TextView) convertView.findViewById(R.id.account_number);
